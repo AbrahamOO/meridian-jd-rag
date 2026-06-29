@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "EVAL-OPS-001",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What dollar threshold triggers mandatory enhanced due diligence on a new corporate account?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "5,000,000",
+      "annual",
+      "corporate",
+      "EDD"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-002",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the current domestic Fedwire dual-approval threshold?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "dual approval",
+      "domestic",
+      "Fedwire"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-003",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What was the domestic Fedwire dual-approval threshold under the 2024 edition?",
+    "expected_source": [
+      "MJD-OPS-0009"
+    ],
+    "expected_answer_contains": [
+      "50,000",
+      "2024",
+      "superseded"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-004",
+    "persona": "BRANCH_STAFF",
+    "question": "What is the current transaction limit requiring triple approval for a domestic Fedwire?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "1,000,000",
+      "triple approval"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-005",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "How many business days does a suspense item have before it must be cleared to its final account?",
+    "expected_source": [
+      "MJD-FIN-0002"
+    ],
+    "expected_answer_contains": [
+      "5 business days",
+      "suspense"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-006",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the re-trigger window for commencing EDD after an in-life trigger?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "15 business days",
+      "re-trigger"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-008",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "Within how many calendar days after a SAR decision date must the institution file the SAR?",
+    "expected_source": [
+      "MJD-CMP-0002"
+    ],
+    "expected_answer_contains": [
+      "30",
+      "calendar days",
+      "filing"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-009",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What is the dollar threshold in currency above which a CTR must be filed?",
+    "expected_source": [
+      "MJD-CMP-0003"
+    ],
+    "expected_answer_contains": [
+      "10,000",
+      "CTR",
+      "currency"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-010",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the maximum rotation interval for service-account secrets?",
+    "expected_source": [
+      "MJD-TEC-0004"
+    ],
+    "expected_answer_contains": [
+      "90 days",
+      "service-account",
+      "rotation"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-011",
+    "persona": "RISK_ANALYST",
+    "question": "What is the minimum aggregate SAR threshold when a suspect is identified?",
+    "expected_source": [
+      "MJD-CMP-0002"
+    ],
+    "expected_answer_contains": [
+      "5,000",
+      "suspect identified"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-012",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What is the Basel III Common Equity Tier 1 minimum including the capital conservation buffer?",
+    "expected_source": [
+      "MJD-RSK-0006"
+    ],
+    "expected_answer_contains": [
+      "7.0",
+      "CET1",
+      "capital conservation buffer"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-014",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the EDD threshold for aggregate cash deposits in any 30-day window for a business account?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "1,000,000",
+      "30-day",
+      "cash deposits"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-015",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "Within how many calendar days after quarter-end must the FR Y-9C be filed for Q1 through Q3?",
+    "expected_source": [
+      "MJD-FIN-0003"
+    ],
+    "expected_answer_contains": [
+      "40",
+      "calendar days",
+      "FR Y-9C"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-016",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What is the maximum time for filing a CTR after the reportable transaction date?",
+    "expected_source": [
+      "MJD-CMP-0003"
+    ],
+    "expected_answer_contains": [
+      "15 calendar days",
+      "CTR",
+      "filing"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-017",
+    "persona": "RISK_ANALYST",
+    "question": "What is the EDD threshold for a single counterparty transaction involving a high-risk jurisdiction?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "high-risk jurisdiction"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-018",
+    "persona": "BRANCH_STAFF",
+    "question": "What is the maximum teller drawer cash ceiling for a standard drawer?",
+    "expected_source": [
+      "MJD-RET-0001"
+    ],
+    "expected_answer_contains": [
+      "10,000",
+      "drawer",
+      "standard"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-020",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the Tier 1 model full independent validation cadence under SR 11-7?",
+    "expected_source": [
+      "MJD-RSK-0002"
+    ],
+    "expected_answer_contains": [
+      "12 months",
+      "Tier 1",
+      "validation"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-021",
+    "persona": "BRANCH_STAFF",
+    "question": "A customer makes a cash deposit. At what total currency amount in a single business day is a Currency Transaction Report triggered?",
+    "expected_source": [
+      "MJD-CMP-0003"
+    ],
+    "expected_answer_contains": [
+      "10,000",
+      "CTR",
+      "currency"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-022",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What is the per-item clearing SLA for a suspense item before it must be escalated as aged?",
+    "expected_source": [
+      "MJD-FIN-0002"
+    ],
+    "expected_answer_contains": [
+      "5 business days",
+      "suspense",
+      "clearing"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OPS-025",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "When no suspect can be identified, what is the maximum calendar days allowed before a SAR must be filed?",
+    "expected_source": [
+      "MJD-CMP-0002"
+    ],
+    "expected_answer_contains": [
+      "60 calendar days",
+      "no suspect"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-001",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "How do the current domestic wire dual-approval threshold and the 2024 threshold differ?",
+    "expected_source": [
+      "MJD-OPS-0007",
+      "MJD-OPS-0009"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "50,000",
+      "raised",
+      "superseded"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-002",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What are the EDD triggers for a PEP customer and how do they relate to the SAR filing requirements?",
+    "expected_source": [
+      "MJD-OPS-0003",
+      "MJD-CMP-0002"
+    ],
+    "expected_answer_contains": [
+      "PEP",
+      "EDD-1",
+      "SAR",
+      "30 calendar days"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-003",
+    "persona": "RISK_ANALYST",
+    "question": "How does the CTR 10,000 USD threshold relate to BSA AML program governance?",
+    "expected_source": [
+      "MJD-CMP-0003",
+      "MJD-CMP-0001"
+    ],
+    "expected_answer_contains": [
+      "10,000",
+      "CTR",
+      "BSA",
+      "reporting"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-004",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "How does the Basel III CET1 ratio requirement feed into the FR Y-9C regulatory reporting cycle?",
+    "expected_source": [
+      "MJD-RSK-0006",
+      "MJD-FIN-0003"
+    ],
+    "expected_answer_contains": [
+      "CET1",
+      "7.0",
+      "HC-R",
+      "quarterly"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-005",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "How does the service-account 90-day rotation interval in the secrets policy relate to model risk management validation cadence?",
+    "expected_source": [
+      "MJD-TEC-0004",
+      "MJD-RSK-0002"
+    ],
+    "expected_answer_contains": [
+      "90 days",
+      "service-account",
+      "Tier 1",
+      "12 months"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-006",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What document governs the EDD procedure and what related documents does it cross-reference for sanctions and monitoring?",
+    "expected_source": [
+      "MJD-OPS-0003",
+      "MJD-OPS-0008",
+      "MJD-CMP-0004"
+    ],
+    "expected_answer_contains": [
+      "EDD",
+      "MJD-OPS-0008",
+      "MJD-CMP-0004",
+      "sanctions"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-007",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "How do the SAR 30-day filing deadline and the BSA AML independent testing frequency interact to ensure program compliance?",
+    "expected_source": [
+      "MJD-CMP-0002",
+      "MJD-CMP-0001"
+    ],
+    "expected_answer_contains": [
+      "30 calendar days",
+      "independent testing",
+      "12 months"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-008",
+    "persona": "RISK_ANALYST",
+    "question": "How does the capital conservation buffer affect distributions when the CET1 ratio is under stress?",
+    "expected_source": [
+      "MJD-RSK-0006"
+    ],
+    "expected_answer_contains": [
+      "2.5",
+      "payout",
+      "buffer",
+      "CET1"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-009",
+    "persona": "BRANCH_STAFF",
+    "question": "What steps must branch staff take when a customer requests a $40,000 outbound wire to a new beneficiary?",
+    "expected_source": [
+      "MJD-RET-0001"
+    ],
+    "expected_answer_contains": [
+      "dual approval",
+      "callback",
+      "25,000",
+      "Branch Manager"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-010",
+    "persona": "SECURITY_ARCHITECT",
+    "question": "How does the data classification standard relate to the handling requirements for CONFIDENTIAL documents at rest?",
+    "expected_source": [
+      "MJD-SEC-0008"
+    ],
+    "expected_answer_contains": [
+      "AES-256-GCM",
+      "CONFIDENTIAL",
+      "encrypted at rest"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-011",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What suspense reconciliation SLA applies and how does it interact with the regulatory filing pre-flight gate?",
+    "expected_source": [
+      "MJD-FIN-0002",
+      "MJD-FIN-0003"
+    ],
+    "expected_answer_contains": [
+      "5 business days",
+      "suspense",
+      "zero",
+      "GL locked"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-SYN-012",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What SR 11-7 Tier 2 model validation cadence applies to the fraud scoring model and what ongoing monitoring frequency is required?",
+    "expected_source": [
+      "MJD-RSK-0002"
+    ],
+    "expected_answer_contains": [
+      "24 months",
+      "Tier 2",
+      "semi-annual",
+      "fraud"
+    ],
+    "type": "multi_doc_synthesis",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-001",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the wire limit?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "dual approval"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-002",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What is the filing deadline?",
+    "expected_source": [
+      "MJD-CMP-0002",
+      "MJD-CMP-0003"
+    ],
+    "expected_answer_contains": [
+      "30",
+      "SAR",
+      "15",
+      "CTR"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-003",
+    "persona": "RISK_ANALYST",
+    "question": "What is the rotation interval?",
+    "expected_source": [
+      "MJD-TEC-0004"
+    ],
+    "expected_answer_contains": [
+      "90 days",
+      "service-account"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-004",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What is the reporting cadence?",
+    "expected_source": [
+      "MJD-FIN-0003"
+    ],
+    "expected_answer_contains": [
+      "quarterly",
+      "FR Y-9C",
+      "Call Report"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-005",
+    "persona": "BRANCH_STAFF",
+    "question": "What is the threshold?",
+    "expected_source": [
+      "MJD-RET-0001"
+    ],
+    "expected_answer_contains": [
+      "10,000",
+      "CTR"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-006",
+    "persona": "SECURITY_ARCHITECT",
+    "question": "What are the approved algorithms?",
+    "expected_source": [
+      "MJD-SEC-0002"
+    ],
+    "expected_answer_contains": [
+      "AES-256-GCM",
+      "TLS 1.3"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-007",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the data classification policy?",
+    "expected_source": [
+      "MJD-SEC-0008"
+    ],
+    "expected_answer_contains": [
+      "PUBLIC",
+      "INTERNAL",
+      "CONFIDENTIAL",
+      "RESTRICTED"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-AMB-008",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the review cadence?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "EDD",
+      "quarterly",
+      "monthly"
+    ],
+    "type": "ambiguous",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-VER-001",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the current domestic Fedwire dual-approval threshold, and what was it under the 2024 edition?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "50,000",
+      "superseded",
+      "MJD-OPS-0009"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-VER-002",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What are the current domestic wire triple-approval limits, as opposed to the 2024 limits?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "1,000,000",
+      "500,000",
+      "current",
+      "2024"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-VER-003",
+    "persona": "BRANCH_STAFF",
+    "question": "Which document is the authoritative source for current transaction limits?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "MJD-OPS-0007",
+      "current",
+      "authoritative",
+      "supersedes"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-VER-004",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "The 2024 edition listed a 50,000 USD domestic wire threshold. Is that still the current limit?",
+    "expected_source": [
+      "MJD-OPS-0007"
+    ],
+    "expected_answer_contains": [
+      "100,000",
+      "superseded",
+      "3.0.0",
+      "2026"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-VER-006",
+    "persona": "RISK_ANALYST",
+    "question": "What is the EDD procedure version and effective date?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "2.4.0",
+      "2025-11-01"
+    ],
+    "type": "version_sensitive",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-001",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the weather forecast for New York City tomorrow?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-002",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "Write me a poem about springtime.",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-003",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the best JavaScript framework for building a single-page application?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-004",
+    "persona": "RISK_ANALYST",
+    "question": "What is the current price of Bitcoin?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-005",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "Can you draft a resignation letter for me?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-006",
+    "persona": "BRANCH_STAFF",
+    "question": "What should I make for dinner tonight?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-007",
+    "persona": "SECURITY_ARCHITECT",
+    "question": "What are the top 10 movies of 2025?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-ACC-001",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What cipher suites are approved for TLS at Meridian J.D.?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-002",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What are the approved cipher suites and TLS settings in the Cryptographic Standard?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-003",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "How is privileged access granted and what is the JIT elevation workflow?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-005",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the SAR filing threshold and escalation procedure when suspicious activity is detected?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-006",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "How do we rotate service-account secrets and what is the rotation interval?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-007",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What is the secret rotation schedule and key management process?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-008",
+    "persona": "BRANCH_STAFF",
+    "question": "What is the EDD threshold for a corporate account?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-009",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What network segmentation zones exist in our zero trust architecture?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-010",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What privileged access management workflow should I follow to get admin access to a database?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-011",
+    "persona": "BRANCH_STAFF",
+    "question": "What are the BSA AML transaction monitoring rules and thresholds?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-012",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What are our AML transaction monitoring thresholds for structuring detection?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-013",
+    "persona": "BRANCH_STAFF",
+    "question": "What are the suspicious activity thresholds in the transaction monitoring rules?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-014",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What are the details of the PAM break-glass access procedure?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-ACC-015",
+    "persona": "RISK_ANALYST",
+    "question": "What does the Cryptographic Standard say about KMS key rotation intervals for DEKs?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-CROSS-001",
+    "persona": "SOFTWARE_ENGINEER",
+    "question": "What is the SR 11-7 Tier 1 model validation cadence?",
+    "expected_source": [
+      "MJD-RSK-0002"
+    ],
+    "expected_answer_contains": [
+      "12 months",
+      "Tier 1",
+      "annual"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-002",
+    "persona": "RISK_ANALYST",
+    "question": "What is the EDD trigger threshold for a new corporate account?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "5,000,000",
+      "annual",
+      "EDD"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-003",
+    "persona": "BRANCH_STAFF",
+    "question": "What are the four data classification levels?",
+    "expected_source": [
+      "MJD-SEC-0008"
+    ],
+    "expected_answer_contains": [
+      "PUBLIC",
+      "INTERNAL",
+      "CONFIDENTIAL",
+      "RESTRICTED"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-004",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What data classification levels exist and which data must be encrypted at rest?",
+    "expected_source": [
+      "MJD-SEC-0008"
+    ],
+    "expected_answer_contains": [
+      "CONFIDENTIAL",
+      "RESTRICTED",
+      "AES-256-GCM",
+      "encrypted"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-006",
+    "persona": "FINANCE_CONTROLLER",
+    "question": "What CET1 minimum ratio must the bank maintain including the capital conservation buffer?",
+    "expected_source": [
+      "MJD-RSK-0006"
+    ],
+    "expected_answer_contains": [
+      "7.0",
+      "CET1",
+      "2.5"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-009",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What is the FR Y-9C filing window for the December 31 year-end quarter?",
+    "expected_source": [
+      "MJD-FIN-0003"
+    ],
+    "expected_answer_contains": [
+      "45 calendar days",
+      "December 31",
+      "year-end"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-015",
+    "persona": "SECURITY_ARCHITECT",
+    "question": "What is the maximum JIT elevation duration without additional explicit approval under the PAM policy?",
+    "expected_source": [
+      "MJD-SEC-0010"
+    ],
+    "expected_answer_contains": [
+      "4 hours",
+      "elevation",
+      "just-in-time"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-ACC-016",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What are the network segmentation zero trust architecture details and zone definitions?",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "access_boundary",
+    "access_expectation": "deny"
+  },
+  {
+    "id": "EVAL-CROSS-018",
+    "persona": "OPERATIONS_ANALYST",
+    "question": "What is the EDD-2 commencement SLA after a trigger event?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "3 business days",
+      "EDD-2"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-020",
+    "persona": "COMPLIANCE_OFFICER",
+    "question": "What is the internal target for CET1 capital at Meridian J.D.?",
+    "expected_source": [
+      "MJD-RSK-0006"
+    ],
+    "expected_answer_contains": [
+      "11.0",
+      "CET1",
+      "internal management target"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-OOS-009",
+    "persona": "SECURITY_ARCHITECT",
+    "question": "Translate this sentence into French: the bank opens at nine.",
+    "expected_source": [],
+    "expected_answer_contains": [],
+    "type": "out_of_scope",
+    "access_expectation": "allow"
+  },
+  {
+    "id": "EVAL-CROSS-023",
+    "persona": "RISK_ANALYST",
+    "question": "What is the frequency of EDD periodic reassessment for a PEP relationship?",
+    "expected_source": [
+      "MJD-OPS-0003"
+    ],
+    "expected_answer_contains": [
+      "6 months",
+      "EDD-1",
+      "PEP"
+    ],
+    "type": "single_doc_lookup",
+    "access_expectation": "allow"
+  }
+]

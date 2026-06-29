@@ -1,0 +1,45 @@
+# Meridian J.D. RAG API image (python:3.12-slim).
+# Builds the FastAPI service. The default profile is zero-key (local/abstain),
+# so the image runs with no API keys. Heavy ML and cloud SDKs are NOT installed
+# here: the API runs on the light core; the local adapter degrades to the
+# deterministic mock embedder/reranker when sentence-transformers is absent.
+
+FROM python:3.12-slim AS base
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    MJD_PROFILE=default
+
+WORKDIR /app
+
+# Install pinned core + DB driver (so the api can talk to pgvector when a DSN is
+# provided) before copying source for better layer caching.
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir \
+      "pydantic==2.13.4" \
+      "pyyaml==6.0.3" \
+      "numpy==2.5.0" \
+      "fastapi==0.138.1" \
+      "uvicorn==0.49.0" \
+      "python-docx==1.2.0" \
+      "pypdf==6.14.2" \
+      "beautifulsoup4==4.15.0" \
+      "httpx==0.28.1" \
+      "psycopg[binary]==3.3.4" \
+      "pgvector==0.4.2"
+
+COPY . /app
+
+# Run as a non-root user (least privilege).
+RUN useradd --create-home --uid 10001 mjd && chown -R mjd:mjd /app
+USER mjd
+
+EXPOSE 8000
+
+# Container healthcheck hits the contract /health endpoint.
+HEALTHCHECK --interval=15s --timeout=5s --start-period=20s --retries=5 \
+  CMD python -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"
+
+CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000"]

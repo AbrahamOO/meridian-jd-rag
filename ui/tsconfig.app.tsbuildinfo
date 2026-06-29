@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/citationdrawer.tsx","./src/components/citationitem.tsx","./src/components/states.tsx","./src/views/auditview.tsx","./src/views/chatview.tsx","./src/views/chunkview.tsx","./src/views/evalview.tsx"],"version":"6.0.3"}

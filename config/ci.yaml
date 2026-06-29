@@ -1,0 +1,9 @@
+# config/ci.yaml  (selected by MJD_PROFILE=ci)
+# Forces all three adapters to the deterministic mock implementations so eval
+# numbers in CI are stable and assertable. Layered on top of default.yaml, so
+# only the provider overrides are needed here.
+profile: ci
+providers:
+  embedding: { adapter: mock, model: mock-embed-256 }
+  generator: { adapter: mock, model: mock-gen }
+  reranker:  { adapter: mock, model: mock-rerank }

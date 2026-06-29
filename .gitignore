@@ -1,0 +1,47 @@
+# Claude Code local agents and settings (never committed)
+.claude/
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# User-local config overrides (never committed)
+config/local.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Node / UI
+node_modules/
+ui/.next/
+ui/dist/
+ui/build/
+*.local
+
+# Build / data artifacts (index, manifests, audit logs are all regenerated)
+data/
+*.duckdb
+*.sqlite
+dist/
+build/
+
+# Eval run artifacts (reports are committed selectively)
+evals/runs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

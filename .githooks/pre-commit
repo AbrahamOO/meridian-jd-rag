@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Committed git pre-commit hook (enable with: git config core.hooksPath .githooks).
+# Enforces the documentation-sync rule and the no-em-dash style rule for every
+# contributor, independent of any local editor or agent configuration.
+#
+# 1) docs-sync drift guard: an architecture-bearing change (api/ retrieval/
+#    ingestion/ generation/ providers/ infra/ or a manifest) must land with a
+#    docs change (README.md, docs/**, or wiki/**). See scripts/check_docs_sync.sh.
+# 2) no em dashes in staged text files.
+
+set -euo pipefail
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$REPO_ROOT"
+
+echo "pre-commit: docs-sync drift guard"
+bash scripts/check_docs_sync.sh
+
+echo "pre-commit: em-dash check"
+bash scripts/check_em_dash.sh
+
+echo "pre-commit: OK"

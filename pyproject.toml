@@ -1,0 +1,113 @@
+[build-system]
+requires = ["setuptools>=82.0.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meridian_jd_rag"
+version = "1.0.0"
+description = "Meridian J.D. RAG: retrieval-time access control, self-threat-model, quantitative eval harness (fictional fintech)."
+readme = "providers/README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Proprietary" }
+authors = [{ name = "Meridian J.D. RAG" }]
+
+# Core dependencies are the light, no-ML, mock/CI path. Heavy ML and cloud
+# adapters live in optional extras so the zero-key mock/CI install stays small
+# and never pulls torch. Every version is pinned exactly for reproducibility.
+dependencies = [
+  "pydantic==2.13.4",
+  "pyyaml==6.0.3",
+  "numpy==2.5.0",
+  "fastapi==0.138.1",
+  "uvicorn==0.49.0",
+  "python-docx==1.2.0",
+  "pypdf==6.14.2",
+  "beautifulsoup4==4.15.0",
+]
+
+[project.optional-dependencies]
+# Local zero-key ML stack (sentence-transformers brings torch). Heavy: not
+# installed in CI. The local adapter lazy-imports these and degrades to the
+# deterministic mock embedder/lexical reranker if they are absent.
+ml = [
+  "sentence-transformers==5.6.0",
+  "torch==2.12.1",
+]
+
+# Vector store and Postgres access. Needed by ingestion/retrieval, not by the
+# provider/config foundation tests.
+db = [
+  "psycopg[binary]==3.3.4",
+  "pgvector==0.4.2",
+]
+
+# Orchestration graph (api layer). Foundation layer does not import it.
+graph = [
+  "langgraph==1.2.6",
+]
+
+# PII redaction (Presidio). Heavy (brings spaCy); not in CI mock path.
+pii = [
+  "presidio-analyzer==2.2.363",
+  "presidio-anonymizer==2.2.363",
+]
+
+# Eval metric library.
+evals = [
+  "ragas==0.4.3",
+]
+
+# Real cloud provider SDKs. Adapters lazy-import these and raise
+# MissingSecretError at construction when keys are absent.
+cloud = [
+  "anthropic==0.112.0",
+  "openai==2.44.0",
+  "google-genai==2.10.0",
+]
+
+# Dev/test/lint toolchain.
+dev = [
+  "pytest==9.1.1",
+  "ruff==0.15.20",
+  "black==26.5.1",
+  "mypy==2.1.0",
+]
+
+# Everything, for a full local developer install.
+all = [
+  "meridian_jd_rag[ml,db,graph,pii,evals,cloud,dev]",
+]
+
+[tool.setuptools]
+# Flat-layout packages: each top-level directory is an importable package with
+# its own __init__.py. See providers/README.md for the import convention note.
+packages = [
+  "providers",
+  "config",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+# Optional ML/cloud/graph deps are absent in the light CI image, so the
+# type: ignore comments that suppress their missing-stub imports are flagged as
+# "unused" only in that environment. Disable the env-dependent check rather than
+# churn ignores; ignore_missing_imports already handles the absent stubs.
+warn_unused_ignores = false
+warn_redundant_casts = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

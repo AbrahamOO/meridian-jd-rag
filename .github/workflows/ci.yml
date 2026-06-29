@@ -1,0 +1,64 @@
+name: ci
+
+# Meridian J.D. RAG CI (devops-packaging contract item 6).
+# Runs on the LIGHT mock path (requirements-ci.txt) under MJD_PROFILE=ci so the
+# whole pipeline is deterministic and needs no API keys, torch, or Postgres.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  MJD_PROFILE: ci
+
+jobs:
+  lint-type-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history so the docs-sync drift guard can diff.
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install light CI dependencies (pinned)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-ci.txt
+          pip install "httpx==0.28.1"
+
+      - name: Dependency pinning check
+        run: bash scripts/check_pinning.sh
+
+      - name: Ruff
+        run: ruff check .
+
+      - name: Black (check only)
+        run: black --check .
+
+      - name: Mypy
+        run: mypy api observability config core providers retrieval generation ingestion
+
+      - name: Build the CI index
+        run: MJD_PROFILE=ci python -m scripts.ingest --mode full --strategies production,naive
+
+      - name: Pytest (MJD_PROFILE=ci)
+        run: MJD_PROFILE=ci python -m pytest tests/ -q
+
+      - name: Access-control proof (zero leaks required)
+        run: MJD_PROFILE=ci python scripts/prove_access_control.py
+
+      - name: Evals ci_suite gate
+        run: bash scripts/ci_eval_gate.sh
+
+      - name: Secret scan
+        run: bash scripts/secret_scan.sh
+
+      - name: Docs-sync drift guard
+        run: bash scripts/check_docs_sync.sh "${{ github.event.pull_request.base.sha || 'HEAD~1' }}"

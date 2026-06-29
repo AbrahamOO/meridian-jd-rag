@@ -1,0 +1,83 @@
+# Meridian J.D. RAG full stack: one `docker compose up` brings up Postgres/pgvector,
+# the API, and a UI placeholder. Healthchecks + init ordering are correct: the API
+# waits for Postgres to be healthy and runs an ingest before serving; the UI waits
+# for the API to be healthy.
+#
+# Zero-key by default: the API runs the default (local/abstain) profile and needs
+# no API keys. Set ANTHROPIC_API_KEY/OPENAI_API_KEY/GEMINI_API_KEY in a .env file
+# only if you switch a provider to a cloud adapter in config/local.yaml.
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: mjd
+      POSTGRES_PASSWORD: mjd
+      POSTGRES_DB: mjd
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mjd -d mjd"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  api:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.api
+    environment:
+      MJD_PROFILE: ${MJD_PROFILE:-default}
+      # DSN is provided so a real deployment uses pgvector; the file index is the
+      # fallback when this is unset.
+      MJD_PG_DSN: postgresql://mjd:mjd@postgres:5432/mjd
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      # DoS mitigation (threat model T-05): per-client request cap on expensive
+      # POST endpoints. Generous code default (1000/min) for dev/CI; a stricter
+      # production value is set here and tunable via the environment.
+      MJD_RATE_LIMIT_ENABLED: ${MJD_RATE_LIMIT_ENABLED:-1}
+      MJD_RATE_LIMIT_PER_MIN: ${MJD_RATE_LIMIT_PER_MIN:-60}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Build the index once (idempotent) then serve. Init ordering: DB healthy ->
+    # ingest -> uvicorn. Ingest writes the file index even when the DSN is set, so
+    # the API has a loadable index immediately.
+    command: >
+      sh -c "python -m scripts.ingest --mode full --strategies production,naive || true;
+             uvicorn api.app:app --host 0.0.0.0 --port 8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - mjddata:/app/data
+
+  ui:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:3000/').status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  pgdata:
+  mjddata:
